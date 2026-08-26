@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetroStore UWP - Rediscover Windows 10 Mobile</title>
+    <title>MetroStore - Rediscover Windows 10 Mobile</title>
     <style>
         /* --- CSS Reset & Variables --- */
         :root {
@@ -51,11 +51,10 @@
             transition: var(--transition);
         }
 
-        /* --- Header / Navigation --- */
+/* --- Header Dark Theme Windows 10 Mobile --- */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid #e0e0e0;
+            background-color: #1F1F1F; /* Abu-abu tua khas Dark Theme Windows 10 */
+            border-bottom: 1px solid #333333;
             position: fixed;
             width: 100%;
             top: 0;
@@ -64,15 +63,28 @@
 
         .nav-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 60px;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--w10-blue);
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .app-logo {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #FFFFFF; /* Teks putih kontras */
+            letter-spacing: 0.5px;
         }
 
         .nav-links { display: flex; gap: 20px; }
@@ -201,17 +213,14 @@
 </head>
 <body>
 
-    <!-- Header -->
+<!-- Header -->
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo">MetroStore UWP</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#showcase">Showcase</a></li>
-                    <!-- EDIT HERE: Link 'Download' button directly to your file -->
-                    <li><a href="https://github.com/janex-sagu/metro-store-files/releases/download/1.0.45.0/MetroStoreUWP_1.5.0.0_arm.appxbundle" class="btn btn-download-hero">Download App</a></li>
-                </ul>
-            </nav>
+            <a href="#" class="logo-wrapper">
+                <!-- Gambar logo diambil dari metro-logo.png -->
+                <img src="metro-logo.png" alt="MetroStore Logo" class="app-logo">
+                <span class="logo-text">MetroStore UWP</span>
+            </a>
         </div>
     </header>
 
