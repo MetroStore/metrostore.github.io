@@ -51,9 +51,9 @@
             transition: var(--transition);
         }
 
-/* --- Header Dark Theme Windows 10 Mobile --- */
+        /* --- Header Dark Theme Windows 10 Mobile --- */
         header {
-            background-color: #1F1F1F; /* Abu-abu tua khas Dark Theme Windows 10 */
+            background-color: #1F1F1F;
             border-bottom: 1px solid #333333;
             position: fixed;
             width: 100%;
@@ -83,7 +83,7 @@
         .logo-text {
             font-size: 1.3rem;
             font-weight: 600;
-            color: #FFFFFF; /* Teks putih kontras */
+            color: #FFFFFF;
             letter-spacing: 0.5px;
         }
 
@@ -91,7 +91,7 @@
         .nav-links a { font-size: 0.9rem; font-weight: 600; }
         .nav-links a:hover { color: var(--w10-blue); }
 
-        /* --- Hero Section (The Cool Minimalist Part) --- */
+        /* --- Hero Section --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -100,14 +100,11 @@
             text-align: center;
             color: var(--w10-white);
             position: relative;
-            padding-top: 70px; /* Offset for fixed header */
-            
-            /* --- EDIT HERE: Background Image --- */
-            /* Upload 'pc-store-bg.jpg' to the same folder on GitHub */
+            padding-top: 70px;
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('pc-store-bg.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax effect */
+            background-attachment: fixed;
         }
 
         .hero-content h1 {
@@ -136,7 +133,7 @@
             transform: scale(1.05);
         }
 
-/* --- Showcase Carousel Styles --- */
+        /* --- Showcase Carousel Styles --- */
         .showcase {
             padding: 80px 0;
             background-color: var(--w10-gray-light);
@@ -157,12 +154,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            user-select: none;
         }
 
         .carousel-track-container {
             width: 100%;
             overflow: hidden;
             padding: 10px 0;
+            cursor: grab;
+        }
+
+        .carousel-track-container:active {
+            cursor: grabbing;
         }
 
         .carousel-track {
@@ -188,6 +191,7 @@
             display: block;
             border-radius: 8px;
             filter: drop-shadow(0 8px 20px rgba(0,0,0,0.25));
+            pointer-events: none;
         }
 
         /* Carousel Navigation Buttons */
@@ -276,7 +280,6 @@
             color: var(--w10-black);
         }
 
-        /* --- Responsive Media Queries --- */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
             .hero-content p { font-size: 1rem; }
@@ -288,11 +291,10 @@
 </head>
 <body>
 
-<!-- Header -->
+    <!-- Header -->
     <header>
         <div class="container nav-container">
             <a href="#" class="logo-wrapper">
-                <!-- Gambar logo diambil dari metro-logo.png -->
                 <img src="metro-logo.png" alt="MetroStore Logo" class="app-logo">
                 <span class="logo-text">MetroStore UWP</span>
             </a>
@@ -304,68 +306,51 @@
         <div class="container hero-content">
             <h1>The Classic Windows Store. <br>Reborn for Mobile.</h1>
             <p>Welcome to MetroStore UWP, the independent web app store for Windows 10 Mobile devices. Discover hundreds of applications and games designed for the platform you love.</p>
-            
-            <!-- EDIT HERE: Link 'Download' button directly to your file -->
             <a href="https://github.com/janex-sagu/metro-store-files/releases/download/1.0.45.0/MetroStoreUWP_1.5.0.0_arm.appxbundle" class="btn btn-download-hero">Download MetroStore App</a>
         </div>
     </section>
 
-<!-- Showcase Carousel Section -->
+    <!-- Showcase Carousel Section -->
     <section class="showcase" id="showcase">
         <div class="container">
             <h2>Explore MetroStore UWP in Action</h2>
             
             <div class="carousel-container">
-                <!-- Tombol Prev -->
                 <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous Slide">&#10094;</button>
 
-                <!-- Track Slide Gambar -->
-                <div class="carousel-track-container">
+                <div class="carousel-track-container" id="trackContainer">
                     <div class="carousel-track" id="carouselTrack">
-                        
-                        <!-- Slide 1 -->
                         <div class="carousel-slide active">
                             <div class="phone-mockup-container">
                                 <img src="ss1.png" alt="MetroStore Screenshot 1">
                             </div>
                         </div>
-
-                        <!-- Slide 2 -->
                         <div class="carousel-slide">
                             <div class="phone-mockup-container">
                                 <img src="ss2.png" alt="MetroStore Screenshot 2">
                             </div>
                         </div>
-
-                        <!-- Slide 3 -->
                         <div class="carousel-slide">
                             <div class="phone-mockup-container">
                                 <img src="ss3.png" alt="MetroStore Screenshot 3">
                             </div>
                         </div>
-
-                        <!-- Slide 4 -->
                         <div class="carousel-slide">
                             <div class="phone-mockup-container">
                                 <img src="ss4.png" alt="MetroStore Screenshot 4">
                             </div>
                         </div>
-
-                        <!-- Slide 5 -->
                         <div class="carousel-slide">
                             <div class="phone-mockup-container">
                                 <img src="ss5.png" alt="MetroStore Screenshot 5">
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-                <!-- Tombol Next -->
                 <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next Slide">&#10095;</button>
             </div>
 
-            <!-- Dots Indicator Navigasi -->
             <div class="carousel-dots" id="carouselDots">
                 <span class="dot active" data-slide="0"></span>
                 <span class="dot" data-slide="1"></span>
@@ -383,13 +368,88 @@
         <div class="container">
             <div class="footer-logo">MetroStore UWP</div>
             <p>Your portal to Windows 10 Mobile applications.</p>
-            
-            <!-- EDIT HERE: Link 'Download' button directly to your file -->
             <a href="https://github.com/janex-sagu/metro-store-files/releases/download/1.0.45.0/MetroStoreUWP_1.5.0.0_arm.appxbundle" class="btn btn-download-footer">Get the latest version</a>
-            
             <p style="margin-top: 40px; opacity: 0.6; font-size: 0.7rem;">&copy; 2026 MetroStore UWP. An independent fan project. Not affiliated with Microsoft.</p>
         </div>
     </footer>
 
+    <!-- JavaScript Carousel Logic -->
+    <script>
+        const carouselTrack = document.getElementById('carouselTrack');
+        const trackContainer = document.getElementById('trackContainer');
+        const slides = Array.from(carouselTrack.children);
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const dotsNav = document.getElementById('carouselDots');
+        const dots = Array.from(dotsNav.children);
+
+        let currentIndex = 0;
+        let startX = 0;
+        let isDragging = false;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+
+        const updateCarousel = (index) => {
+            carouselTrack.style.transition = 'transform 0.4s ease-in-out';
+            carouselTrack.style.transform = `translateX(-${index * 100}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            currentIndex = index;
+        };
+
+        nextBtn.addEventListener('click', () => {
+            const nextIndex = (currentIndex + 1) % slides.length;
+            updateCarousel(nextIndex);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel(prevIndex);
+        });
+
+        dotsNav.addEventListener('click', e => {
+            const targetDot = e.target.closest('.dot');
+            if (!targetDot) return;
+            const targetIndex = parseInt(targetDot.dataset.slide);
+            updateCarousel(targetIndex);
+        });
+
+        // Touch & Mouse Drag (Swipe Support)
+        const getPositionX = event => event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+
+        const touchStart = (index) => (event) => {
+            isDragging = true;
+            startX = getPositionX(event);
+            carouselTrack.style.transition = 'none';
+        };
+
+        const touchMove = (event) => {
+            if (!isDragging) return;
+            const currentPosition = getPositionX(event);
+            const diff = currentPosition - startX;
+            if (diff > 50) {
+                isDragging = false;
+                const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateCarousel(prevIndex);
+            } else if (diff < -50) {
+                isDragging = false;
+                const nextIndex = (currentIndex + 1) % slides.length;
+                updateCarousel(nextIndex);
+            }
+        };
+
+        const touchEnd = () => { isDragging = false; };
+
+        trackContainer.addEventListener('touchstart', touchStart(currentIndex));
+        trackContainer.addEventListener('touchend', touchEnd);
+        trackContainer.addEventListener('touchmove', touchMove);
+
+        trackContainer.addEventListener('mousedown', touchStart(currentIndex));
+        trackContainer.addEventListener('mouseup', touchEnd);
+        trackContainer.addEventListener('mouseleave', touchEnd);
+        trackContainer.addEventListener('mousemove', touchMove);
+    </script>
 </body>
 </html>
