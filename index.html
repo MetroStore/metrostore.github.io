@@ -253,6 +253,68 @@
             .phone-mockup-container { max-width: 240px; }
         }
 
+        /* --- System Requirements Section --- */
+        .requirements {
+            padding: 50px 0 80px;
+            background-color: var(--w10-gray-light);
+            text-align: center;
+        }
+
+        .requirements-card {
+            background-color: var(--w10-white);
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 35px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            border: 1px solid #E0E0E0;
+            text-align: left;
+        }
+
+        .requirements-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--w10-black);
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .requirements-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .requirements-list li {
+            font-size: 1rem;
+            color: var(--w10-gray-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            background-color: var(--w10-blue);
+            color: var(--w10-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 576px) {
+            .requirements-card { padding: 25px 20px; }
+            .requirements-list li { font-size: 0.92rem; }
+        }
+
         /* --- Footer --- */
         footer {
             background-color: var(--w10-black);
@@ -363,11 +425,27 @@
         </div>
     </section>
 
+    <!-- System Requirements Section -->
+    <section class="requirements" id="requirements">
+        <div class="container">
+            <div class="requirements-card">
+                <h3>System Requirements</h3>
+                <ul class="requirements-list">
+                    <li><span class="check-icon">&#10003;</span> Developer Mode On</li>
+                    <li><span class="check-icon">&#10003;</span> Windows 10 Mobile version 1511 or higher</li>
+                    <li><span class="check-icon">&#10003;</span> Interop Unlock</li>
+                    <li><span class="check-icon">&#10003;</span> Inject with CMD Injector</li>
+                    <li><span class="check-icon">&#10003;</span> AppInstaller already installed</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-logo">MetroStore UWP</div>
-            <p>Your portal to Windows 10 Mobile applications.</p>
+            <p>Your portal to Windows 10 Mobile applications and games.</p>
             <a href="https://github.com/janex-sagu/metro-store-files/releases/download/1.0.45.0/MetroStoreUWP_1.5.0.0_arm.appxbundle" class="btn btn-download-footer">Get the latest version</a>
             <p style="margin-top: 40px; opacity: 0.6; font-size: 0.7rem;">&copy; 2026 MetroStore UWP. An independent fan project. Not affiliated with Microsoft.</p>
         </div>
