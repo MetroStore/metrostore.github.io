@@ -136,42 +136,117 @@
             transform: scale(1.05);
         }
 
-        /* --- Showcase Section --- */
+/* --- Showcase Carousel Styles --- */
         .showcase {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: var(--w10-gray-light);
             text-align: center;
         }
 
         .showcase h2 {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
             font-weight: 700;
+            color: var(--w10-black);
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 450px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-track-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         .phone-mockup-container {
-            position: relative;
-            display: inline-block;
-            max-width: 350px;
-            margin: 0 auto;
+            max-width: 280px;
+            width: 100%;
         }
 
         .phone-mockup-container img {
             width: 100%;
             height: auto;
             display: block;
-            /* Thin shadow to make it pop */
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+            border-radius: 8px;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.25));
         }
 
-        /* A minimal faux-bezel/frame effect */
-        .phone-mockup-container::after {
-            content: '';
+        /* Carousel Navigation Buttons */
+        .carousel-btn {
             position: absolute;
-            top: -10px; left: -10px; right: -10px; bottom: -10px;
-            border: 2px solid rgba(0,0,0,0.1);
-            border-radius: 20px;
-            pointer-events: none;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(31, 31, 31, 0.8);
+            color: #ffffff;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--w10-blue);
+        }
+
+        .prev-btn { left: -20px; }
+        .next-btn { right: -20px; }
+
+        /* Carousel Dots */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active, .dot:hover {
+            background-color: var(--w10-blue);
+            transform: scale(1.2);
+        }
+
+        .showcase-subtitle {
+            margin-top: 25px;
+            font-weight: 300;
+            color: var(--w10-gray-dark);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 576px) {
+            .prev-btn { left: 5px; }
+            .next-btn { right: 5px; }
+            .phone-mockup-container { max-width: 240px; }
         }
 
         /* --- Footer --- */
@@ -235,18 +310,71 @@
         </div>
     </section>
 
-    <!-- Showcase Section -->
+<!-- Showcase Carousel Section -->
     <section class="showcase" id="showcase">
         <div class="container">
-            <h2>Experience MetroStore on Your Lumia</h2>
+            <h2>Explore MetroStore UWP in Action</h2>
             
-            <div class="phone-mockup-container">
-                <!-- EDIT HERE: Replace with your actual image path on GitHub -->
-                <!-- Upload 'lumia-950xl-store.png' to the same folder on GitHub -->
-                <img src="lumia-950xl-store.png" alt="MetroStore App running on Microsoft Lumia 950 XL">
+            <div class="carousel-container">
+                <!-- Tombol Prev -->
+                <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous Slide">&#10094;</button>
+
+                <!-- Track Slide Gambar -->
+                <div class="carousel-track-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        
+                        <!-- Slide 1 -->
+                        <div class="carousel-slide active">
+                            <div class="phone-mockup-container">
+                                <img src="ss1.png" alt="MetroStore Screenshot 1">
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="carousel-slide">
+                            <div class="phone-mockup-container">
+                                <img src="ss2.png" alt="MetroStore Screenshot 2">
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="carousel-slide">
+                            <div class="phone-mockup-container">
+                                <img src="ss3.png" alt="MetroStore Screenshot 3">
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="carousel-slide">
+                            <div class="phone-mockup-container">
+                                <img src="ss4.png" alt="MetroStore Screenshot 4">
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="carousel-slide">
+                            <div class="phone-mockup-container">
+                                <img src="ss5.png" alt="MetroStore Screenshot 5">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Tombol Next -->
+                <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next Slide">&#10095;</button>
+            </div>
+
+            <!-- Dots Indicator Navigasi -->
+            <div class="carousel-dots" id="carouselDots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
             </div>
             
-            <p style="margin-top: 30px; font-weight: 300; color: var(--w10-gray-dark);">A familiar interface, curated for the modern enthusiast.</p>
+            <p class="showcase-subtitle">Designed for Windows 10 Mobile with a smooth, native Metro UI experience.</p>
         </div>
     </section>
 
